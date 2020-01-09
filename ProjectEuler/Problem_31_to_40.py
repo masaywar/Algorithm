@@ -209,5 +209,71 @@ def Problem38():
                     result = int(temp)
     return result
 
+def Problem39():
+    maxStep = 0
+    index = 0
+    for p in range(120, 1001):
+        step = 0
+        for k in range(p//3, p//2):
+            for j in range(1, k):
+                t = p - k - j
+                if t <= j: break
+                if k < j or k < t: continue
+                if k ** 2 == j ** 2 + t ** 2:
+                    step += 1
+            if maxStep <= step:
+                maxStep = step
+                index = p
+    return index
+
+def Problem40():
+    one = 10
+    two = (99 - 10) * 2 + one + 1
+    three = (999 - 100) * 3 + two + 1
+    four = (9999- 1000) * 4 + three + 1
+    five = (99999 - 10000) * 5 + four + 1
+    six = (999999 - 100000) * 6 + five + 1
+    L = []
+    for k in range(1, 1000000):
+        L.extend(list(str(k)))
+    index = 0
+    result = 1
+    for k in range(1, one + 1):
+        if index == 0:
+            result *= int(L[index])
+            break
+        index += 1
+    index = one + 1
+    for k in range(one + 1, two + 1, 2):
+        if index == 9 or index == 99:
+            result *= int(L[index])
+            break
+        index += 1
+    index = two + 1
+    for k in range(two + 1, three + 1, 3):
+        if index == 999:
+            result *= int(L[index])
+            break
+        index += 1
+    index = three + 1
+    for k in range(three + 1, four + 1, 4):
+        if index == 9999:
+            result *= int(L[index])
+            break
+        index += 1
+    index = four + 1
+    for k in range(four + 1, five + 1, 5):
+        if index == 99999:
+            result *= int(L[index])
+            break
+        index += 1
+    index = five + 1
+    for k in range(five + 1, six + 1):
+        if index == 999999:
+            result *= int(L[index])
+            break
+        index += 1
+    print(result)
+
 if __name__ == "__main__":
-    print(Problem38())
+    Problem40()
