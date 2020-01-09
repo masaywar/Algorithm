@@ -243,31 +243,31 @@ def Problem40():
             result *= int(L[index])
             break
         index += 1
-    index = one + 1
+    index = one
     for k in range(one + 1, two + 1, 2):
         if index == 9 or index == 99:
             result *= int(L[index])
-            break
+            continue
         index += 1
-    index = two + 1
+    index = two
     for k in range(two + 1, three + 1, 3):
         if index == 999:
             result *= int(L[index])
             break
         index += 1
-    index = three + 1
+    index = three
     for k in range(three + 1, four + 1, 4):
         if index == 9999:
             result *= int(L[index])
             break
         index += 1
-    index = four + 1
+    index = four
     for k in range(four + 1, five + 1, 5):
         if index == 99999:
             result *= int(L[index])
             break
         index += 1
-    index = five + 1
+    index = five
     for k in range(five + 1, six + 1):
         if index == 999999:
             result *= int(L[index])
