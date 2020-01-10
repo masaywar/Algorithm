@@ -15,7 +15,7 @@ def Hanoi(source, destination, middle, plates): # 11729번
 
 
 
-num = int(input())
+# num = int(input())
 mat = [[" " for _ in range(num)] for _ in range(num)]
 
 def solve(n, i, j):
@@ -30,9 +30,10 @@ def solve(n, i, j):
                 solve(div, i + div*k, j + div*q)
     return 
 
-solve(num, 0, 0)
-for k in mat:
-    string = ""
-    for j in k:
-        string += j
-    print(string)
+# solve(num, 0, 0)
+# for k in mat:
+#     string = ""
+#     for j in k:
+#         string += j
+#     print(string)
+
