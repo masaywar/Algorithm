@@ -33,3 +33,61 @@ def CheckBig(): # 7568
             if studentList[k][0] < studentList[j][0] and studentList[k][1] < studentList[j][1]:
                 ranking += 1
         print(ranking, end=" ")
+
+def ChessPaint(): # 1018
+    col, row = map(int, input().split())
+
+    whiteFirstPaintBoard = [[] for _ in range(col)]
+    blackFirstPaintBoard = [[] for _ in range(col)]
+
+    b = "BWBWBWBWWBWBWBWBBWBWBWBWWBWBWBWBBWBWBWBWWBWBWBWBBWBWBWBWWBWBWBWB"
+    w = "WBWBWBWBBWBWBWBWWBWBWBWBBWBWBWBWWBWBWBWBBWBWBWBWWBWBWBWBBWBWBWBW"
+    count = 0
+    for k in range(64):
+        if k != 0 and k % 8 == 0:
+            count += 1
+        whiteFirstPaintBoard[count].append(w[k])
+        blackFirstPaintBoard[count].append(b[k])
+
+    userBoard = []
+    for _ in range(col):
+        userBoard.append(list(sys.stdin.readline()[:-1]))
+   
+    tempBoard = []
+    result = col * row
+    # step = 1
+    for k in range(col - 7):
+        count = 0
+        for j in range(row - 7):
+            for q in range(8):
+                tempBoard.append(userBoard[k + q][j:j + 8])
+            # print(f"{step}-----------------------------------------------------------")
+            # for a in tempBoard:
+            #     print(a)
+            # step += 1
+            A = CheckDiff(tempBoard, whiteFirstPaintBoard)
+            B = CheckDiff(tempBoard, blackFirstPaintBoard)
+            if result > min(A, B):
+                result = min(A, B)
+            tempBoard.clear()
+        count += 1
+
+    print(result)
+
+def CheckDiff(boardA, boardB):
+    res = 0
+    for k in range(8):
+        for j in range(8):
+            if boardA[k][j] != boardB[k][j]:
+                res += 1
+    return res
+
+# def BoardPrint(board, row):
+#     stringBuilder = ""
+#     for k in board:
+#         stringBuilder += k
+#         if (len(stringBuilder) % row == 0):
+#             print(stringBuilder)
+#             stringBuilder = ""
+
+ChessPaint()
