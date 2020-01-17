@@ -55,16 +55,11 @@ def ChessPaint(): # 1018
    
     tempBoard = []
     result = col * row
-    # step = 1
     for k in range(col - 7):
         count = 0
         for j in range(row - 7):
             for q in range(8):
                 tempBoard.append(userBoard[k + q][j:j + 8])
-            # print(f"{step}-----------------------------------------------------------")
-            # for a in tempBoard:
-            #     print(a)
-            # step += 1
             A = CheckDiff(tempBoard, whiteFirstPaintBoard)
             B = CheckDiff(tempBoard, blackFirstPaintBoard)
             if result > min(A, B):
@@ -82,12 +77,28 @@ def CheckDiff(boardA, boardB):
                 res += 1
     return res
 
-# def BoardPrint(board, row):
-#     stringBuilder = ""
-#     for k in board:
-#         stringBuilder += k
-#         if (len(stringBuilder) % row == 0):
-#             print(stringBuilder)
-#             stringBuilder = ""
+def DirectorShom(): # 1436
+    apocalypseNum = 666
+    index = int(input())
+    temp = 0
+    count = 1
+    while index != count:
+        for k in range(apocalypseNum + 1, 1000000000):
+            if index == count : 
+                temp += 1
+                break
+            
+            sixCount = 0
+            for j in str(k):
+                if j == "6":
+                    sixCount += 1
+                    if sixCount == 3:
+                        apocalypseNum = k
+                        count += 1
+                        break
+                else:
+                    sixCount = 0
 
-ChessPaint()
+    print(apocalypseNum)
+
+DirectorShom()
