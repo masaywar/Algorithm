@@ -173,4 +173,43 @@ def CoordinateSorting_2():
             strBuilder += str(j) + " "
         print(strBuilder)
 
-CoordinateSorting_2()
+# CoordinateSorting_2()
+def WordSorting():
+    size = int(sys.stdin.readline())
+    wordList = [sys.stdin.readline()[0:-1] for _ in range(size)]
+    sorting = dict()
+
+    for k in wordList:
+        if len(k) in sorting:
+            if k not in sorting[len(k)]:
+                sorting[len(k)].append(k)
+        else:
+            sorting[len(k)] = [k]
+    
+    for k in sorted(sorting.keys()):
+        if len(sorting[k]) == 1:
+            print(sorting[k][0])
+        else:
+            for j in sorted(sorting[k]):
+                print(j)
+
+def ageSorting():
+    size = int(sys.stdin.readline())
+    dataDict = dict()
+
+    for k in range(size):
+        key, value = sys.stdin.readline().split()
+        key = int(key)
+        if key in dataDict:
+            dataDict[key].append(value)
+        else:
+            dataDict[key] = [value]
+
+    for k in sorted(dataDict):
+        if len(dataDict[k]) > 1:
+            for j in dataDict[k]:
+                print(str(k) + " " + j)
+        else:
+            print(str(k) + " " + dataDict[k][0])           
+
+ageSorting()
