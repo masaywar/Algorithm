@@ -165,5 +165,3 @@ def StartLink(x):
         StartLink(k + 1)
         stack.pop()
 
-StartLink(0)
-print(minVal)
